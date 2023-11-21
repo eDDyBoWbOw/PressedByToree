@@ -1,7 +1,47 @@
 [
   {
-    "name":"Call of Duty",
-    "description": "FPS, Copy paste shooter game.",
-    "price": 80.00
+    "name":"Holy Hood Sweater",
+    "description": "Dark Gray Sweater.",
+    "price": 45.00
+  }
+  {
+    "name":"Alice Starbucks",
+    "description": "Coffee jar cup.",
+    "price": 25.00
+  }
+  {
+    "name":"Pooh bear tumbler",
+    "description": "Pooh Character tumbler 20z.",
+    "price": 25.00
+  }
+  {
+    "name":"Scream tumbler",
+    "description": "Scream tumbler 20z.",
+    "price": 25.00
+  }
+  {
+    "name":"Scary tumbler",
+    "description": "Scary tumber 20z.",
+    "price": 25.00
+  }
+  {
+    "name":"Mermaid tumbler",
+    "description": "Red Hair mermaid tumbler 20z.",
+    "price": 25.00
+  }
+  {
+    "name":"Pumpkin tumbler",
+    "description": "Pumpkin tumbler 20z.",
+    "price": 25.00
+  }
+  {
+    "name":"Encanto tumbler",
+    "description": "Encanto tumbler 20z.",
+    "price": 25.00
+  }
+  {
+    "name":"Good guy tumbler",
+    "description": "Good guy tumbler 20z.",
+    "price": 25.00
   }
 ]
