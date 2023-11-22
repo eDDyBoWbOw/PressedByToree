@@ -10,12 +10,25 @@ const typeDefs = gql`
   }
 
   type User {
-
+    _id: ID
+    firstName: String
+    lastName: String
+    email: String
+    orders: [Order]
   }
-
+  
+  type Checkout {
+    session: ID
+  }
+  
   type ProductCategory {
     _id: ID
     name: String
+  }
+
+  type Auth {
+    token: ID
+    user: User
   }
 
   type Query {
@@ -23,7 +36,9 @@ const typeDefs = gql`
     user(userId: ID!): User
     productCategories: [ProductCategory]
     products(productCategory: ID, name: String): [Product]
-    product(_id: ID!): Product
+    product(_id: ID!): 
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
   }
 
 
