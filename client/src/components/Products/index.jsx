@@ -1,8 +1,10 @@
- import { Product } from '../../../../server/models';
- import { Link } from 'react-router-dom';
+ //import { Product } from '../../../../server/models';
+ //import { Link } from 'react-router-dom';
+ import React from 'react';
+ import { Container, Row, Col, Button } from 'react-bootstrap';
  //import { QUERY_PRODUCTS } from '../../../utils/queries';
  
- const ProductNames = [
+ const Products = [
     "Holy Hood Sweater",
     "Alice Starbucks",  
     "Pooh bear tumbler", 
@@ -13,49 +15,27 @@
     "Encanto tumbler",
     "Good guy tumbler"]
 
- function ProductItem() {
-
-    return(
-        <Product>
-        <div class="container store-container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300" alt="Product Image" class="product-image"></img>
-                    <div class="product-details">
-                        <h5>Product 1</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>$19.99</strong></p>
-                        <button class="btn btn-primary">Add to Cart</button>
-                    </div>
+const ProductItem = () => {
+    return (
+        <Container className="product-container">
+        {Products.map((product, index) => (
+        <Row key={index}>
+            <Col md={6}>
+                <img src={`../src/assets/${product.name}.JPG`} alt="Product Image" className="product-image" />
+           </Col>
+            <Col md={6}>
+                <div className="product-details">
+                <h2>{product.name}</h2>
+                <p>{product.description}</p>
+                <p><strong>Price:</strong> {product.price}</p>
+                <p><strong>Availability:</strong> In Stock</p>
+                <Button variant="primary" className="btn-buy">Buy Now</Button>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300" alt="Product Image" class="product-image"></img>
-                    <div class="product-details">
-                        <h5>Product 2</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>$29.99</strong></p>
-                        <button class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300" alt="Product Image" class="product-image"></img>
-                    <div class="product-details">
-                        <h5>Product 3</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p><strong>$39.99</strong></p>
-                        <button class="btn btn-primary">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        <Product/>
-    )
+            </Col>
+        </Row>
+        ))}
+        </Container>
+    );
 };
 
 export default ProductItem;

@@ -1,7 +1,7 @@
 import React, {useState} from "react"; //useState is a hook that allows us to manage state within a functional component
 import { Link } from "react-router-dom"; //Link is a react router component that allows us to create links between routes
 import {useMutation} from "@apollo/client"; //useMutation is a hook that allows us to execute mutations in our component
-import {ADD_USER} from "../../utils/mutations"; //ADD_USER is a mutation we will create in the front end
+import {ADD_USER} from "../../../utils/mutations"; //ADD_USER is a mutation we will create in the front end
 import {Form, Button} from "react-bootstrap"; //Form and Button are bootstrap components that will make it easier for us to create a form
 
 

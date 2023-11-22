@@ -1,6 +1,6 @@
 import './style.css'
 import Navbar from '../../components/Navbar'
-import Product from '../Products'
+import Product from '../../components/Products'
 import Checkout from '../../components/Checkout'
 import Signup from '../../components/SignUpForm'
 import ItemContainer from '../../pages/Items'
