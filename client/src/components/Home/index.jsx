@@ -1,8 +1,9 @@
 import './style.css'
 import Navbar from '../../components/Navbar'
-import Product from '../../components/Tumblers'
+import Product from '../Products'
 import Checkout from '../../components/Checkout'
 import Signup from '../../components/SignUpForm'
+import ItemContainer from '../../pages/Items'
 
 function Home() {
   return ( <>
@@ -10,6 +11,7 @@ function Home() {
     <div>
       <Navbar/>
       This is home page
+      <ItemContainer/>
       <Product/>
       <Checkout/>
       <Signup/>

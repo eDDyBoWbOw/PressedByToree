@@ -3,7 +3,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import Product from '../../server/models/Product.js';
+import Product from './components/Products';
+import Navbar from './components/Navbar';
+import Login from './components/Login'
+import Signup from './components/SignUpForm';
+import Checkout from './components/Checkout';
+
 
 const router = createBrowserRouter([
   {
@@ -23,9 +28,6 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      }, {
-        path: '/logout',
-        element: <Logut />
       }, {
         path: '/products/:id',
         element: <Product />
