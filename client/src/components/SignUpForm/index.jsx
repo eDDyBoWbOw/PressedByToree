@@ -1,10 +1,11 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
-import {useMutation} from "@apollo/client";
-import {ADD_USER} from "../../utils/mutations";
-import {Form, Button} from "react-bootstrap";
+import React, {useState} from "react"; //useState is a hook that allows us to manage state within a functional component
+import { Link } from "react-router-dom"; //Link is a react router component that allows us to create links between routes
+import {useMutation} from "@apollo/client"; //useMutation is a hook that allows us to execute mutations in our component
+import {ADD_USER} from "../../utils/mutations"; //ADD_USER is a mutation we will create in the front end
+import {Form, Button} from "react-bootstrap"; //Form and Button are bootstrap components that will make it easier for us to create a form
 
 
+//using signup code
 function SignUpForm(props) {
     const [addUser] = useMutation(ADD_USER);
     const [formState, setFormState] = useState({
@@ -12,8 +13,9 @@ function SignUpForm(props) {
         email: "",
         password: ""
     });
+    //
 
-    const handleFormSubmit = async (event) => {
+    const handleFormSubmit = async (event) => { //handleFormSubmit is an async function that will execute when the form is submitted
         event.preventDefault();
         const mutationResponse = await addUser({
             variables: {
@@ -22,7 +24,7 @@ function SignUpForm(props) {
                 password: formState.password
             }
         });
-        const token = mutationResponse.data.addUser.token;
+        const token = mutationResponse.data.addUser.token; 
         Auth.login(token);
     };
 
@@ -61,4 +63,5 @@ function SignUpForm(props) {
         </div>
     );
 }
-export default SignUpForm;
+
+export default SignUpForm; //exporting SignUpForm function
