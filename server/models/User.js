@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const Order = require('./Order');
 
 const userSchema = new Schema({
   username: {
@@ -19,6 +20,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
+  orders: [Order.schema],
   // isAdmin: {
   //   type: Boolean,
   //   default: false,  

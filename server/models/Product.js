@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const productSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    trim: true,
   },
   description: {
     type: String,
@@ -20,7 +21,7 @@ const productSchema = new Schema({
       message: 'Price must be a valid decimal with 10 total digits and 2 decimal places',
     },
   },
-  category: {
+  productCategory: {
     type: String,
     required: true
   },

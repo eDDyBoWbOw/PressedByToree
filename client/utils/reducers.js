@@ -6,7 +6,7 @@ import {
  CLEAR_CART, 
  UPDATE_CART_QUANTITY, 
  TOGGLE_CART,
- UPDATE_PRODUCTS_CATEGORIES,
+ UPDATE_PRODUCT_CATEGORIES,
  UPDATE_CURRENT_PRODUCTS,
 } from "./actions"
 
@@ -67,10 +67,10 @@ export const reducer = (state, action) => {
           cartOpen: !state.cartOpen
         };
   
-      case UPDATE_PRODUCTS_CATEGORIES:
+      case UPDATE_PRODUCT_CATEGORIES:
         return {
           ...state,
-          productsCategories: [...action.productsCategories],
+          productCategories: [...action.productCategories],
         };
   
       case UPDATE_CURRENT_PRODUCTS:

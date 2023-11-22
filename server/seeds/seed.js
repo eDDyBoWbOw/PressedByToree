@@ -6,7 +6,7 @@ const productData = require('./productData.json');
 db.once('open', async () => {
   await Product.deleteMany({});
 
-  const products = await Product.insertMany(productData);
+  const Products = await Product.insertMany(productData);
 
   console.log('Products successfully seeded!');
   process.exit(0);
