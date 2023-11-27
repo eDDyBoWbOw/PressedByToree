@@ -14,7 +14,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    orders: [Order]  # Add missing Order type
+    orders: [Order] 
   }
   
   type Checkout {
@@ -33,7 +33,7 @@ const typeDefs = gql`
 
   type Order {
     _id: ID
-    
+
   }
 
   type Query {
@@ -41,7 +41,7 @@ const typeDefs = gql`
     user(userId: ID!): User
     productCategories: [ProductCategory]
     products(productCategory: ID, name: String): [Product]
-    product(_id: ID!): Product  # Add return type for product
+    product(_id: ID!): Product 
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
   }
