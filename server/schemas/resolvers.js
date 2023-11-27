@@ -1,4 +1,3 @@
-// const { Tech, Matchup } = require('../models');
 const { User, Product, ProductCategory, Order } = require('../models');
 
 const resolvers = {
@@ -6,7 +5,7 @@ const resolvers = {
     productCategories: async () => {
       return await ProductCategory.find();
     },
-    products: async (parent, { productCategory,args, name,}) => {
+    products: async (parent, { productCategory, name }) => {
       const params = {};
 
       if (productCategory) {

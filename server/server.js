@@ -1,48 +1,31 @@
 const express = require('express');
-// Uncomment the following code once you have built the queries and mutations in the client folder
 const { ApolloServer } = require('apollo-server-express');
-//const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 
-// Uncomment the following code once you have built the queries and mutations in the client folder
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-// Comment out this code once you have built out queries and mutations in the client folder
-// const routes = require('./routes');
-
 const PORT = process.env.PORT || 3001;
 const app = express();
-// Uncomment the following code once you have built the queries and mutations in the client folder
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+}
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// if we're in production, serve client/build as static assets
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
-
-//comment this code out when in production
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-// });
-
-// Comment out this code once you have built out queries and mutations in the client folder
-//app.use(routes);
-
-// Uncomment the following code once you have built the queries and mutations in the client folder
-
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-// });
-
-const startApolloServer = async () => {
+// Move server.start() here
+async function startApolloServer() {
   await server.start();
   server.applyMiddleware({ app });
 
@@ -52,13 +35,7 @@ const startApolloServer = async () => {
       console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     });
   });
-};
+}
 
-
-// Comment out this code once you have built out queries and mutations in the client folder
-// db.once('open', () => {
-//   app.listen(PORT, () => console.log(`Now listening on localhost: ${PORT}`));
-// });
-
-// Uncomment the following code once you have built the queries and mutations in the client folder
+// Call the async function to start the server
 startApolloServer();
