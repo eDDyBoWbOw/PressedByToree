@@ -35,8 +35,10 @@ const typeDefs = gql`
   type Query {
     users: [User]!
     user(userId: ID!): User
-    productCategories: [ProductCategory]
-    getProducts(productCategory: ID, name: String): [Product]
+    getProductCategories: [ProductCategory]
+    getAllProductsByCat(productCategory: ID, name: String): [Product]
+    getProduct: [Product]
+    getAllProducts: [Product]
     getCart(_id: ID!): Cart
   }
   
@@ -44,6 +46,7 @@ const typeDefs = gql`
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addToCart(_id: ID!): [Product]
+    removeFromCart(_id: ID!): [Product]
   }
 `;
 
