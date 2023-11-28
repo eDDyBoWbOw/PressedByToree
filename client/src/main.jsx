@@ -6,7 +6,7 @@ import App from "./App.jsx";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Checkout from "./pages/Checkout";
-import Products from "./pages/Products";
+import Product from "./pages/Product";
 import Contact from "./pages/Contact";
 
 
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
       {
-        path: "/products",
-        element: <Products />,
+        path: "/product/:id",
+        element: <Product />,
       },
       {
         path: "/contact",
