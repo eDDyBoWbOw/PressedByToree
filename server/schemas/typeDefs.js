@@ -14,11 +14,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    orders: [Order] 
-  }
-  
-  type Checkout {
-    session: ID
+    cartItems: [Cart] 
   }
   
   type ProductCategory {
@@ -31,24 +27,23 @@ const typeDefs = gql`
     user: User
   }
 
-  type Order {
+  type Cart {
     _id: ID
-
+    products: [Product]
   }
 
   type Query {
     users: [User]!
     user(userId: ID!): User
     productCategories: [ProductCategory]
-    products(productCategory: ID, name: String): [Product]
-    product(_id: ID!): Product 
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
+    getProducts(productCategory: ID, name: String): [Product]
+    getCart(_id: ID!): Cart
   }
-
+  
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addToCart(_id: ID!): [Product]
   }
 `;
 

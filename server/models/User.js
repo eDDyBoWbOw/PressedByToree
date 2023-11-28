@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const Order = require('./Order');
+const Cart = require('./Cart');
 
 const userSchema = new Schema({
   username: {
@@ -20,7 +20,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
-  orders: [Order.schema],
+  cartItems: [Cart.schema],
   // isAdmin: {
   //   type: Boolean,
   //   default: false,  

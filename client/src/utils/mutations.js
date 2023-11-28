@@ -32,9 +32,9 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
+export const ADD_ITEM = gql`
+  mutation addItem($products: [ID]!) {
+    addItem(products: $products) {
       purchaseDate
       products {
         _id
