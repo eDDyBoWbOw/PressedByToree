@@ -3,6 +3,64 @@ import NavbarComponent from '../../components/Navbar'
 import ProductCard from '../../components/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
 
+const product =
+[
+  {    
+    "productCategory": "Tumblers",
+    "name":"Holy Hood Sweater",
+    "description": "Dark Gray Sweater.",
+    "price": 45.00
+  },
+  {
+    "productCategory": "Tumblers",
+    "name":"Aliceitem",
+    "description": "Coffee jar cup.",
+    "price": 25.00
+  },
+  {
+    "productCategory": "Tumblers",
+    "name":"Pooh bear tumbler",
+    "description": "Pooh Character tumbler 20z.",
+    "price": 25.00
+  },
+  {
+    "productCategory": "Tumblers",
+    "name":"Scream tumbler",
+    "description": "Scream tumbler 20z.",
+    "price": 25.00
+  },
+  {
+    "productCategory": "Tumblers",
+    "name":"Scary tumbler",
+    "description": "Scary tumber 20z.",
+    "price": 25.00
+  },
+  {
+    "productCategory": "Tumblers",
+    "name":"Mermaid tumbler",
+    "description": "Red Hair mermaid tumbler 20z.",
+    "price": 25.00
+  },
+  {
+    "productCategory": "Tumblers",
+    "name":"Pumpkin tumbler",
+    "description": "Pumpkin tumbler 20z.",
+    "price": 25.00
+  },
+  {
+    "productCategory": "Tumblers",
+    "name":"Encanto tumbler",
+    "description": "Encanto tumbler 20z.",
+    "price": 25.00
+  },
+  {
+    "productCategory": "Tumblers",
+    "name":"Good guy tumbler",
+    "description": "Good guy tumbler 20z.",
+    "price": 25.00
+  }
+]
+
 function Home() {
   return ( <>
 
@@ -12,25 +70,28 @@ function Home() {
       <Container className="store-container">
         <Row>
           <ProductCard
-            imgSrc="https://via.placeholder.com/300"
-            altText="Product 1 Image"
-            productName="Product 1"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            price="$19.99"
+            key={product.name}
+            imgSrc={`/assets/${product.name}.JPG`}
+            altText={`${product.name} Image`}
+            name={product.name}
+            description={product.description}
+            price={product.price}
           />
           <ProductCard
-            imgSrc="https://via.placeholder.com/300"
-            altText="Product 2 Image"
-            productName="Product 2"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            price="$29.99"
+            key={product.name}
+            imgSrc={`/assets/${product.name}.JPG`}
+            altText={`${product.name} Image`}
+            name={product.name}
+            description={product.description}
+            price={product.price}
           />
           <ProductCard
-            imgSrc="https://via.placeholder.com/300"
-            altText="Product 3 Image"
-            productName="Product 3"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            price="$39.99"
+            key={product.name}
+            imgSrc={`/assets/${product.name}.JPG`}
+            altText={`${product.name} Image`}
+            name={product.name}
+            description={product.description}
+            price={product.price}
           />
         </Row>
 
