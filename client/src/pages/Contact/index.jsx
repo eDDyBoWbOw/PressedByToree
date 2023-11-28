@@ -1,14 +1,14 @@
 import './style.css'
 import NavbarComponent from '../../components/Navbar'
-function Checkout() {
 
+function Contact() {
   return (
     <>
       <NavbarComponent/>
-      <p>This is checkout page</p>
-      
+     <p>This is the Contact page</p> 
     </>
+    
   )
 }
 
-export default Checkout
+export default Contact

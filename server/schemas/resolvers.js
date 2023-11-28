@@ -1,32 +1,19 @@
-const { User, Product, ProductCategory, Order } = require('../models');
+const { User, Product, ProductCategory, Cart } = require('../models');
 
 const resolvers = {
   Query: {
-    productCategories: async () => {
-      return await ProductCategory.find();
+    getProducts: async (parent, { productCategory, name }) => {
+     
     },
-    products: async (parent, { productCategory, name }) => {
-      const params = {};
 
-      if (productCategory) {
-        params.productCategory = productCategory;
-      }
-
-      if (name) {
-        params.name = {
-          $regex: name,
-        };
-      }
-
-      return await Product.find(params).populate('productCategory');
-    },
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('productCategory');
-    },
   },
-  // Mutation: {
+  Mutation: {
+    addToCart: async (parent, { _id }) => {
+     // This function will grab a product by ID and then move it to the products row in the Cart type
 
-  // },
+    },
+
+  },
 };
 
 module.exports = resolvers;
