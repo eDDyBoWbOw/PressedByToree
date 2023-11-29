@@ -2,7 +2,7 @@ import './style.css'
 import NavbarComponent from '../../components/Navbar'
 import ProductCard from '../../components/ProductCard';
 import { Container, Row, Col } from 'react-bootstrap';
-
+// import product from './productData.json';
 const product =
 [
   {    
