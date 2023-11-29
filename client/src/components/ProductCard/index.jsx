@@ -1,6 +1,10 @@
+import { useQuery } from '@apollo/client';
+import { QUERY_PRODUCTS } from '../../utils/queries';
+import { useMutation } from '@apollo/client';
+import { ADD_ITEM } from '../../utils/mutations';
+
 function ProductCard() {
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
-  const [selectedProducts, setSelectedProducts] = useState([]);
+  const { loading, error, data } = useQuery(QUERY_PRODUCTS);
   const [addItem, { mutationError }] = useMutation(ADD_ITEM);
 
   const handleAddToCart = async (productName) => {
