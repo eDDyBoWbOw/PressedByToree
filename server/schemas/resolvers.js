@@ -1,65 +1,86 @@
 const { User, Product, ProductCategory, Cart } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: () => users,
-    user: (parent, { userId }) => users.find(user => user._id === userId),
-    getProductCategories: () => productCategories,
-    getAllProductsByCat: (parent, { productCategory, name }) => {
-      return products.filter(product => {
-        return (
-          (!productCategory || product.productCategory === productCategory) &&
-          (!name || product.name.includes(name))
-        );
+    users: async () => await User.find(),
+    user: async (parent, { userId }) => await User.findById(userId),
+    getProductCategories: async () => await ProductCategory.find(),
+    getAllProductsByCat: async (parent, { productCategory, name }) => {
+      return await Product.find({
+        productCategory: new RegExp(productCategory, 'i'),
+        name: new RegExp(name, 'i')
       });
     },
-  getAllProducts:() => products, {
-     getCart: (parent, { _id }) => carts.find(cart => cart._id === _id),
-    }
+    getAllProducts: async () => await Product.find(),
+    getCart: async (parent, { _id }) => await Cart.findById(_id),
   },
-}
+
   Mutation: {
-    addUser: (parent, { name, email, password }) => {
-      const newUser = { _id: name, email, password, 
-      users.push(newUser);
-      return {token: , user: newUser};
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
     },
-    login: (parent, {email, password }) => {
-      const user = users.find(u => u.email === email && u.password === password);
-      if (user) {
-        return { token: /* generate token */, user };
-      } else {
-        throw new Error("Invalid credentials");
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('User not found');
       }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
     },
+    addToCart: async (parent, { _id }, context) => {
+      // Use the context to access the authenticated user
+      const { user } = context;
 
-    addToCart: (parent, { _id }) => {
-      const user = /* retrieve user based on authentication token or other criteria */;
-      const productToAdd = products.find(product => product._id === _id);
+      if (!user) {
+        throw new AuthenticationError('User not authenticated');
+      }
 
-      if (user && productToAdd) {
-        user.cartItems.push({ _id: /* generate cart item ID */, products: [productToAdd] });
+      const productToAdd = await Product.findById(_id);
+
+      if (productToAdd) {
+        user.cartItems.push({ _id: productToAdd._id, products: [productToAdd] });
+        await user.save();
         return user.cartItems;
       } else {
-        throw new Error("User or product not found");
+        throw new Error("Product not found");
       }
     },
-    removeFromCart: (parent, { _id }) => {
-      const user = /* retrieve user based on authentication token or other criteria */;
-      const productToRemove = products.find(product => product._id === _id);
+    removeFromCart: async (parent, { _id }, context) => {
+      const { user } = context;
 
-      if (user && productToRemove) {
+      if (!user) {
+        throw new AuthenticationError('User not authenticated');
+      }
+
+      const productToRemove = await Product.findById(_id);
+
+      if (productToRemove) {
         user.cartItems = user.cartItems.map(cartItem => ({
           ...cartItem,
-          products: cartItem.products.filter(product => product._id !== _id),
+          products: cartItem.products.filter(product => product._id.toString() !== _id),
         }));
 
+        await user.save();
         return user.cartItems;
       } else {
-        throw new Error("User or product not found");
+        throw new Error("Product not found");
       }
     },
   },
 };
 
 module.exports = resolvers;
+
