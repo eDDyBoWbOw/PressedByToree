@@ -11,10 +11,9 @@ const typeDefs = gql`
 
   type User {
     _id: ID
-    firstName: String
-    lastName: String
+    username: String
     email: String
-    cartItems: [Cart] 
+    cartItems: [Product]  # Change to [Product]
   }
   
   type ProductCategory {
@@ -29,7 +28,11 @@ const typeDefs = gql`
 
   type Cart {
     _id: ID
-    products: [Product]
+  }
+
+  type AddToCartResponse {
+    user: User
+    message: String
   }
 
   type Query {
@@ -39,13 +42,13 @@ const typeDefs = gql`
     getAllProductsByCat(productCategory: ID, name: String): [Product]
     getProduct: [Product]
     getAllProducts: [Product]
-    getCart(_id: ID!): Cart
+    getCart: Cart
   }
   
   type Mutation {
-    addUser(name: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addToCart(_id: ID!): [Product]
+    addToCart(_id: ID!): AddToCartResponse
     removeFromCart(_id: ID!): [Product]
   }
 `;
