@@ -1,0 +1,35 @@
+.product-card {
+    margin: 20px;
+    border: none;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+}
+
+.product-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-details .card-title {
+    font-size: 20px;
+    color: #d5bdaf;
+    margin-bottom: 10px;
+}
+
+.product-details .card-text {
+    font-size: 15px;
+    color: #b79492;
+    margin-bottom: 10px;
+}
+
+.product-details button {
+    padding: 10px 20px;
+    background-color: #d5bdaf;
+    border: none;
+    color: #b79492;
+    cursor: pointer;
+}
