@@ -49,13 +49,21 @@ npm run build
 This command builds the React app for production.
 ```
 
-Author
-[Group:Luckyday]
+## Links 
+Github: https://github.com/eDDyBoWbOw/project3
+
+Git deployed link:
+
+Heroku Link:
+
+## Group 
+Luckyday
 
 
-[Participants: Edward, Alexander, Miranda, Alex]
+## Participants
+ Edward, Alexander, Miranda, Alex
 
-License
+
+
+## License
 This project is licensed under the MIT License.
-
-Happy Shopping with PressedByToree! 🛍️✨
